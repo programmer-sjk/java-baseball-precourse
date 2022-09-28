@@ -29,4 +29,11 @@ public class SetTest {
     void 크기를_구할수있다() {
         assertThat(numbers.size()).isEqualTo(4);
     }
+
+    @DisplayName("집합에 포함여부를 알 수 있다")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3"})
+    void contains(String input) {
+        assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(true);
+    }
 }
