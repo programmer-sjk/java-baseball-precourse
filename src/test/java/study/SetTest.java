@@ -28,7 +28,7 @@ public class SetTest {
     @DisplayName("집합의 크기를 구할 수 있다")
     @Test
     void 크기를_구할수있다() {
-        assertThat(numbers.size()).isEqualTo(4);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @DisplayName("집합에 포함여부를 알 수 있다")
