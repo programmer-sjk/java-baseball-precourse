@@ -14,5 +14,24 @@ public class Application {
         Computer computer = new Computer(pickNumberInRange(MIN, MAX));
         BaseBallScreen.inputNumber();
         String input = Console.readLine();
+        validateInput(input);
+    }
+
+    private static void validateInput(String input) {
+        validateInputLength(input);
+        validateIsInteger(input);
+    }
+
+    private static void validateInputLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+    private static void validateIsInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
