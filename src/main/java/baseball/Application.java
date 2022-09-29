@@ -1,10 +1,11 @@
 package baseball;
 
 import baseball.model.Computer;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import baseball.view.BaseBallScreen;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static final int MIN = 100;
@@ -12,9 +13,15 @@ public class Application {
 
     public static void main(String[] args) {
         Computer computer = new Computer(pickNumberInRange(MIN, MAX));
+
         BaseBallScreen.inputNumber();
-        String input = Console.readLine();
+        String input = readLine();
         validateInput(input);
+
+        int strikeCount = computer.getStrikeCount(input);
+        int ballCount = computer.getBallCount(input);
+
+        BaseBallScreen.count(strikeCount, ballCount);
     }
 
     private static void validateInput(String input) {
