@@ -10,10 +10,18 @@ import baseball.view.BaseBallScreen;
 public class Application {
     public static final int MIN = 100;
     public static final int MAX = 999;
+    public static final int BASEBALL_NUMBER_LENGTH = 3;
 
     public static void main(String[] args) {
+        Boolean isFinish = false;
         Computer computer = new Computer(pickNumberInRange(MIN, MAX));
 
+        while(isFinish == false) {
+            isFinish = play(computer);
+        }
+    }
+
+    private static boolean play(Computer computer) {
         BaseBallScreen.inputNumber();
         String input = readLine();
         validateInput(input);
@@ -22,6 +30,12 @@ public class Application {
         int ballCount = computer.getBallCount(input);
 
         BaseBallScreen.count(strikeCount, ballCount);
+
+        return matchAll(strikeCount);
+    }
+
+    private static boolean matchAll(int strikeCount) {
+        return strikeCount == BASEBALL_NUMBER_LENGTH;
     }
 
     private static void validateInput(String input) {
@@ -30,7 +44,7 @@ public class Application {
     }
 
     private static void validateInputLength(String input) {
-        if (input.length() != 3) {
+        if (input.length() != BASEBALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
