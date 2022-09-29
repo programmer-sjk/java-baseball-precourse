@@ -12,16 +12,28 @@ public class Application {
     public static final int MAX = 999;
     public static final int BASEBALL_NUMBER_LENGTH = 3;
 
-    public static void main(String[] args) {
-        Boolean isFinish = false;
-        Computer computer = new Computer(pickNumberInRange(MIN, MAX));
+    public static final String RESTART_SIGNAL = "1";
 
-        while(isFinish == false) {
-            isFinish = play(computer);
+    public static void main(String[] args) {
+        Boolean isContinue = true;
+
+        while (isContinue == true) {
+            isContinue = play();
         }
     }
 
-    private static boolean play(Computer computer) {
+    private static boolean play() {
+        Boolean isRoundFinish = false;
+        Computer computer = new Computer(pickNumberInRange(MIN, MAX));
+
+        while (isRoundFinish == false) {
+            isRoundFinish = playRound(computer);
+        }
+
+        return restart();
+    }
+
+    private static boolean playRound(Computer computer) {
         BaseBallScreen.inputNumber();
         String input = readLine();
         validateInput(input);
@@ -32,6 +44,11 @@ public class Application {
         BaseBallScreen.count(strikeCount, ballCount);
 
         return matchAll(strikeCount);
+    }
+
+    private static Boolean restart() {
+        BaseBallScreen.finish();
+        return readLine().equals(RESTART_SIGNAL) ? true : false;
     }
 
     private static boolean matchAll(int strikeCount) {
