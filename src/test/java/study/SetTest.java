@@ -5,13 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -34,7 +32,7 @@ public class SetTest {
     @DisplayName("집합에 포함여부를 알 수 있다")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void contains(String input, String expect) {
+    void 포함여부를_알수있다(String input, String expect) {
         Boolean result = Boolean.parseBoolean(expect);
         assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(result);
     }

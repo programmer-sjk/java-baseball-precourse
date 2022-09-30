@@ -11,7 +11,7 @@ public class Computer {
         int strikeCount = 0;
 
         for (int i = 0; i < number.length(); i++) {
-            strikeCount += isEqual(number.charAt(i), input.charAt(i));
+            strikeCount += equalCount(number.charAt(i), input.charAt(i));
         }
 
         return strikeCount;
@@ -43,13 +43,13 @@ public class Computer {
             char value
     ) {
         if (inputIndex != computerIndex) {
-            return isEqual(value, number.charAt(computerIndex));
+            return equalCount(value, number.charAt(computerIndex));
         }
 
         return 0;
     }
 
-    private int isEqual(int num1, int num2) {
+    private int equalCount(int num1, int num2) {
         return num1 == num2 ? 1 : 0;
     }
 }
