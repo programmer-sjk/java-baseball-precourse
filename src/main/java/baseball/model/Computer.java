@@ -49,7 +49,7 @@ public class Computer {
         return 0;
     }
 
-    private int equalCount(int num1, int num2) {
+    private int equalCount(char num1, char num2) {
         return num1 == num2 ? 1 : 0;
     }
 }
